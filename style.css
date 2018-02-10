@@ -8,32 +8,43 @@ html {
 body {
   margin: 0px;
   /* background-color: #495867; /*145C9E*/
-  background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
-  background: -moz-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* FF3.6+ */
-  background: -ms-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* IE10 */
-  background: -o-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Opera 11.10+ */
+
+  /*background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
+  /*background: -moz-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* FF3.6+ */
+  /*background: -ms-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* IE10 */
+  /*background: -o-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Opera 11.10+ */
   background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* W3C */
+/*background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);*/
 }
 
 /* #canvas {
   background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%);
 }
-
+*/
 #app {
   z-index: 1;
-} */
+}
 
 .center {
   text-align: center;
 }
 
 
+
+
 /*------- Header -------------------------------------------------------------*/
-#headers, .input-parent, .menu-btns {
+.header, .menu-btns {
   font-family: 'Roboto', sans-serif;
   text-shadow: 1px 1px 3px #495867;
   color: #EEEAEA;
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
 }
+
+.header {
+  animation: rot3 6s 1 linear;
+  box-shadow: 1px 1px 3px #495867;
+}
+
 #title {
   font-size: 8em;
   opacity: .95;
@@ -44,19 +55,47 @@ body {
 
 
 /*------- Input --------------------------------------------------------------*/
-.input-parent, .menu-btns {
+/* #player-input {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  font-size: 60px;
+}
+#submit {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#input-parent{
+  width: 160px;
+  margin: 5% auto 50px;
+  position: relative;
+} */
+
+
+
+
+.menu-btns {
   opacity: .75;
   font-size: 6.5em;
 }
 
-.input-parent {
-  background: -webkit-linear-gradient(90deg, #EC6F66 10%, darkmagenta 90%);
-}
 
 #input-parent {
+  position: relative;
+  height: 300px;
+  width: 350px;
+  /* right: 100px; */
   /* display: flex; */
   /* justify-content: space-around; */
 }
+
+
+
+
 /*
 Setting margin to 'auto' is a common trick.
 In most instances, setting to auto means 'take up as much space as possible'.
@@ -65,12 +104,142 @@ We could also have written this in the margin shorthand,
 which specifies the margin-top, right, bottom and left respectively ---
  margin: 0 auto 0 auto; --- or, simply, margin: 0 auto;.
 */
-#player-input {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+#player-input{
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: -100px;
   font-size: 6.5em;
+  border-style: groove;
+  top: 40px;
+  text-align: center;
 }
+
+#player-input:focus, #submit:focus {
+  outline: 0;
+}
+
+
+#submit {
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  font-size: 2em;
+  position: absolute;
+  top: 156px;
+  left: 262px;
+  margin-right: 100px;
+  /* animation: rot2 10s 1 linear; */
+}
+
+.select-animation {
+  animation: enlargen .4s 1 linear;
+}
+
+
+@keyframes enlargen {
+  0%, 100% {
+    font-size: 2em;
+  }
+  30% {
+    font-size: 10em;
+  }
+}
+
+@keyframes opening {
+  0%, 100% {
+    width: 100%;
+    height: 310px;
+  }
+  30% {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+
+
+ @keyframes rot {
+	from {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+@keyframes rot1 {
+	0% {
+		transform: rotate(0deg)
+		           translate(0px)
+		           rotate(0deg);
+  }
+  25% {
+    transform: translate(50%, 50%) rotate(90deg) ;
+
+  }
+  50% {
+    transform: rotate(180deg)
+               translate(-150px)
+               rotate(-180deg);
+  }
+  75% {
+    transform: rotate(270deg)
+               translate(-150px)
+               rotate(-270deg);
+  }
+  100% {
+		transform: rotate(360deg)
+		           translate(0px)
+		           rotate(-360deg);
+  }
+}
+
+
+@keyframes rot2 {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix(1, 2, 3, 4, 5, 6);
+  },
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+
+@keyframes rot3 {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix3d(1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 666, 0, 6, 0, 0, 1);
+  }
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+
+
 input::-webkit-input-placeholder {
 color:  #EEEAEA !important;
 text-align: center;
@@ -88,9 +257,7 @@ color:  #F3A183 !important;
 text-align: center;
 }
 /* Optimization: https://codepen.io/cemerson/pen/Gjnlo */
-#submit {
-  font-size: 6.5em;
-}
+
 
 /*------- Guesses ------------------------------------------------------------*/
 #guesses {
@@ -100,7 +267,18 @@ text-align: center;
 
 }
 .guess {
+  display: inline;
+  /* display: block; */
+  border-style: inset;
+  border-width: 6px 3px 6px 9px;
+  /* border: 6px inset; */
+  border-radius: 1.4%;
+  margin: 5% 2% 20% 0%;
+  padding: 3% 4.2% 3% 4%;
+  font-size: 3em;
 
+  /*when correct guess, border-style: outset. (vs. inset)
+  which means, have to label each guess differently, different IDs.*/
 }
 ul {
   list-style: none;
@@ -128,6 +306,7 @@ ul {
 
 #byline {
   margin-top: 3%;
+  text-align: right;
 }
 
 img {
@@ -136,10 +315,15 @@ img {
   height: 100px;
 }
 #footer {
+  position: fixed;     /* <-- fixes footer... */
+  bottom: 0;  /* ...to the bottom of the page */
+
   width: 100%;
-  border-top: solid 2px black;
-  background: linear-gradient(90deg, #516395 10%, #614385 90%);
+  border-top: solid 2px #333;
+  /* background: linear-gradient(90deg, #516395 10%, #614385 90%); */
+  /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
+  /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; */
+ background-blend-mode: multiply,multiply;
   box-shadow: 1px 1px 3px #495867;
-  /* position: fixed; */
-  bottom: 0;
+
 }

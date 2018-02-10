@@ -20,70 +20,65 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   </head>
-  <body class="container">
+  <body>
     <!-- <canvas id="canvas"> -->
-    <div id="app">
+    <div id="app" class="container">
       <div class="center">
 
-        <nav class="navbar navbar-default" id="navbar">
-          <div id="headers" class="navbar-header">
+
+          <div class="header">
             <h1 id="title">Guessing Game</h1>
             <h2 id="subtitle">Guess a number between 1 and 100...</h2>
           </div>
-          <div class="nav navbar-nav navbar-right" id="menu-btns">
-            <button id="reset" class="menu-btns">Reset</button>
-            <button id="hint" class="menu-btns">Hint</button>
-          </div>
-        </nav>
+
 
         <div id="main">
-
-        <div id="input-parent">
-          <input id="player-input" class="input-parent" class="center" placeholder="Enter a number"
-          maxlength="3" autofocus=autofocus></input>
-          <button id="submit" class="input-parent">Go!</button>
+        <div id="input-container" class="row">
+        <div id="input-parent" class="col-sm-3">
+          <input id="player-input" placeholder="#" maxlength="3" autofocus=autofocus></input>
+          <button type="button" class="btn btn-success" id="submit">Go</button>
+        </div>
         </div>
 
         <div id="guesses">
           <ul class="row" id="guesses-list">
-            <li class="col-sm-4">-</li>
-            <li class="col-sm-4">-</li>
-            <li class="col-sm-4">-</li>
-            <li class="col-sm-4">-</li>
-            <li class="col-sm-4">-</li>
+            <li class="guess">50</li>
+            <li class="guess">05</li>
+            <li class="guess">88</li>
+            <li class="guess">01</li>
+            <li class="guess">78</li>
           </ul>
         </div>
 
+        <nav class="navbar navbar-default" id="menu-btns">
+          <button type="button" class="btn btn-warning" id="reset">Reset</button>
+          <button type="button" class="btn btn-info" id="hint">Hint</button>
+        </nav>
 
 
-      </div>
-    </div>
-
-
-    <div id="footer">
-      <div class="row">
-
-
-        <div class="" id="byline">
-          <h4>Project by Ben Ellentuck</h4>
-        </div>
-
-        <div class="">
-          <img src="fa-logo.png" alt="Fullstack Logo"></img>
-        </div>
-        <!-- <div class="">
-          <img src="gh-logo.png" alt="Grace Hopper Logo"></img>
-        </div> -->
 
       </div>
     </div>
 
+    </div>
+
+    </div>
+    <!-- end of the container -->
+<!-- out of the container -->
+    <div class="row" id="footer">
+      <div  class="col-sm-3">
+        <img src="fa-logo.png" alt="Fullstack Logo"></img>
+      </div>
+
+      <div class="col-sm-9" id="byline">
+        <h4>Project by Ben Ellentuck</h4>
+      </div>
     </div>
     <!-- </canvas> -->
   </body>
-  <!-- <script
+  <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script type="text/javascript" src="index.js"></script> -->
+  <script type="text/javascript" src="index.js"></script>
 </html>

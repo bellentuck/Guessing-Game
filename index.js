@@ -1,9 +1,34 @@
-/* Gradient stuff */
+
+
+
+
+
+
 
 $(document).ready(function() {
-  makeCanvasFullPage();
-  loadInGradients("https://github.com/ghosh/uiGradients/blob/master/gradients.json");
+
+  //makeCanvasFullPage();
+  //loadInGradients("https://github.com/ghosh/uiGradients/blob/master/gradients.json");
+  setEventListeners();
 });
+
+
+  /* Guess Button animation */
+function setEventListeners() {
+  var goBtn = document.getElementById("submit");
+  goBtn.addEventListener('click', function() {
+    goBtn.preventDefault;
+    console.log('clicked');
+    // See: https://css-tricks.com/restart-css-animation/
+    goBtn.classList.remove("select-animation");
+    void goBtn.offsetWidth;
+    goBtn.classList.add("select-animation");
+  }, false);
+}
+
+
+
+/* Gradient stuff */
 
 function makeCanvasFullPage() {
   var canvas = document.getElementById('canvas');
