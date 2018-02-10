@@ -2,7 +2,8 @@
 
 /*------- Presets/large-scale stuff ------------------------------------------*/
 html {
-  box-sizing: 'border-box'
+  box-sizing: 'border-box';
+  /* animation: backgroundColor 4s infinite linear; */
 } /*change the calculation of the width of an element to include padding and border.*/
 
 body {
@@ -141,9 +142,15 @@ which specifies the margin-top, right, bottom and left respectively ---
 @keyframes enlargen {
   0%, 100% {
     font-size: 2em;
+    width: 70px;
+    height: 70px;
   }
   30% {
-    font-size: 10em;
+    font-size: 4.5em; /* 10em */
+  }
+  70% {
+    width: 69px;
+    height: 69px;
   }
 }
 
@@ -155,6 +162,15 @@ which specifies the margin-top, right, bottom and left respectively ---
   30% {
     width: 100%;
     height: 400px;
+  }
+}
+
+@keyframes backgroundColor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .9;
   }
 }
 
@@ -280,14 +296,18 @@ text-align: center;
   /*when correct guess, border-style: outset. (vs. inset)
   which means, have to label each guess differently, different IDs.*/
 }
+
+.guess:hover {
+   border-style: outset;
+}
+
 ul {
   list-style: none;
   padding: 0;
 }
 
 /*------- Menu Buttons -------------------------------------------------------*/
-
-.menu-btns {
+#menu-btns {
   background: -webkit-linear-gradient(90deg, darkmagenta 10%, #EC6F66 90%);
   margin-bottom: 7%;
 }
