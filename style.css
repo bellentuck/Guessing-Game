@@ -8,13 +8,18 @@ html {
 
 body {
   margin: 0px;
+  background-image: url('./img/binary.jpg');
+
+  /* background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); W3C */
+
+
   /* background-color: #495867; /*145C9E*/
 
   /*background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
   /*background: -moz-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* FF3.6+ */
   /*background: -ms-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* IE10 */
   /*background: -o-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Opera 11.10+ */
-  background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* W3C */
+  /* background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); W3C */
 /*background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);*/
 }
 
@@ -34,16 +39,16 @@ body {
 
 
 /*------- Header -------------------------------------------------------------*/
-.header, .menu-btns {
+.header, .menu-btns, #player-input, #submit, .guess {
   font-family: 'Roboto', sans-serif;
   text-shadow: 1px 1px 3px #495867;
-  color: #EEEAEA;
-  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
 }
 
 .header {
+  color: #EEEAEA;
   animation: rot3 6s 1 linear;
   box-shadow: 1px 1px 3px #495867;
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
 }
 
 #title {
@@ -112,9 +117,11 @@ which specifies the margin-top, right, bottom and left respectively ---
   position: absolute;
   margin-left: -100px;
   font-size: 6.5em;
+  color: #fff;
   border-style: groove;
   top: 40px;
   text-align: center;
+  background: linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
 }
 
 #player-input:focus, #submit:focus {
@@ -138,6 +145,13 @@ which specifies the margin-top, right, bottom and left respectively ---
   animation: enlargen .4s 1 linear;
 }
 
+.player-input-animation {
+  animation: enlargen2 1s 1 linear;
+}
+.submit-input-animation {
+  animation: enlargen3 1s 1 linear;
+}
+
 
 @keyframes enlargen {
   0%, 100% {
@@ -151,6 +165,27 @@ which specifies the margin-top, right, bottom and left respectively ---
   70% {
     width: 69px;
     height: 69px;
+  }
+}
+
+@keyframes enlargen2 {
+  0% {
+    height: 225px;
+    width: 225px;
+  }
+  100% {
+    height: 400px;
+    width: 400px;
+  }
+}
+@keyframes enlargen3 {
+  0% {
+    height: 70px;
+    width: 70px;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
   }
 }
 
@@ -292,6 +327,8 @@ text-align: center;
   margin: 5% 2% 20% 0%;
   padding: 3% 4.2% 3% 4%;
   font-size: 3em;
+  color: #fff;
+  background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%);
 
   /*when correct guess, border-style: outset. (vs. inset)
   which means, have to label each guess differently, different IDs.*/
@@ -346,4 +383,9 @@ img {
  background-blend-mode: multiply,multiply;
   box-shadow: 1px 1px 3px #495867;
 
+}
+
+/************* Placeholder ******************/
+:placeholder-shown {
+  color: red;
 }

@@ -18,11 +18,21 @@ function setEventListeners() {
   var goBtn = document.getElementById("submit");
   goBtn.addEventListener('click', function() {
     goBtn.preventDefault;
-    console.log('clicked');
     // See: https://css-tricks.com/restart-css-animation/
     goBtn.classList.remove("select-animation");
     void goBtn.offsetWidth;
     goBtn.classList.add("select-animation");
+  }, false);
+  var input = document.getElementById("input-parent");
+  input.addEventListener('mouseenter', function() {
+    input.preventDefault;
+    // See: https://css-tricks.com/restart-css-animation/
+    $('#player-input').classList.remove("player-input-animation");
+    void $('#player-input').offsetWidth;
+    $('#player-input').classList.add("player-input-animation");
+    $('#submit').classList.remove("submit-input-animation");
+    void $('#submit').offsetWidth;
+    $('#submit').classList.add("submit-input-animation");
   }, false);
 }
 
