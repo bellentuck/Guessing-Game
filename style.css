@@ -39,15 +39,26 @@ body {
 
 
 /*------- Header -------------------------------------------------------------*/
-.header, .menu-btns, #player-input, #submit, .guess {
+.gameboard, .menu-btns, #player-input, #submit, .guess {
   font-family: 'Roboto', sans-serif;
   text-shadow: 1px 1px 3px #495867;
 }
 
-.header {
+.gameboard {
   color: #EEEAEA;
-  animation: rot3 6s 1 linear;
+  animation: overture 1.8s 1 linear;
   box-shadow: 1px 1px 3px #495867;
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+/* }
+
+.header { */
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.header-vertical {
   background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
 }
 
@@ -89,14 +100,23 @@ body {
   font-size: 6.5em;
 }
 
+#input-container {
+  position: relative;
+}
 
 #input-parent {
-  position: relative;
+  position: absolute;
   height: 300px;
   width: 350px;
   /* right: 100px; */
   /* display: flex; */
   /* justify-content: space-around; */
+}
+
+#btn-parent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -115,6 +135,7 @@ which specifies the margin-top, right, bottom and left respectively ---
   height: 225px;
   border-radius: 50%;
   position: absolute;
+  z-index: -2;
   margin-left: -100px;
   font-size: 6.5em;
   color: #fff;
@@ -138,6 +159,7 @@ which specifies the margin-top, right, bottom and left respectively ---
   top: 156px;
   left: 262px;
   margin-right: 100px;
+  z-index: -1;
   /* animation: rot2 10s 1 linear; */
 }
 
@@ -151,6 +173,22 @@ which specifies the margin-top, right, bottom and left respectively ---
 .submit-input-animation {
   animation: enlargen3 1s 1 linear;
 }
+
+.answerWas {
+  font-family: "Shrikhand";
+  font-size: 42px;
+  margin-top: 27px;
+  margin-right: -150px;
+  margin-left: 10px;
+  z-index: 1;
+  opacity: .9;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+
 
 
 @keyframes enlargen {
@@ -271,7 +309,7 @@ which specifies the margin-top, right, bottom and left respectively ---
 }
 
 
-@keyframes rot3 {
+@keyframes overture {
 	0% {
 		transform: rotate(0deg)
 		           translate(-150px)
@@ -348,11 +386,10 @@ ul {
   background: -webkit-linear-gradient(90deg, darkmagenta 10%, #EC6F66 90%);
   margin-bottom: 7%;
 }
-#reset {
-
-}
-#hint {
-
+#reset, #hint {
+  /* margin: 100px 100px -90px 100px; */
+  width: 200px;
+  height: 40px;
 }
 
 /*------- Footer -------------------------------------------------------------*/

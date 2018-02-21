@@ -23,17 +23,20 @@ function setEventListeners() {
     void goBtn.offsetWidth;
     goBtn.classList.add("select-animation");
   }, false);
+  /*
   var input = document.getElementById("input-parent");
   input.addEventListener('mouseenter', function() {
     input.preventDefault;
     // See: https://css-tricks.com/restart-css-animation/
-    $('#player-input').classList.remove("player-input-animation");
-    void $('#player-input').offsetWidth;
-    $('#player-input').classList.add("player-input-animation");
-    $('#submit').classList.remove("submit-input-animation");
-    void $('#submit').offsetWidth;
-    $('#submit').classList.add("submit-input-animation");
+    console.log('here!');
+    // $('#player-input').classList.remove("player-input-animation");
+    // void $('#player-input').offsetWidth;
+    // $('#player-input').classList.add("player-input-animation");
+    // $('#submit').classList.remove("submit-input-animation");
+    // void $('#submit').offsetWidth;
+    // $('#submit').classList.add("submit-input-animation");
   }, false);
+  */
 }
 
 

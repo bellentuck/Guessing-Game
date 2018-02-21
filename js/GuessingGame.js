@@ -31,6 +31,7 @@ function Game() {
   this.playersGuess = null;
   this.pastGuesses = [];
   this.winningNumber = generateWinningNumber();
+  this.isOver = false;
 }
 
 Game.prototype.difference = function() {
@@ -93,10 +94,14 @@ function processPlayerGuess(game) {
 
 function processGuessOutcome(game, outcome) {
 
+
+  if (game.isOver) throw 'Cannot process guess if game is over';
+
   if (outcome === game.playerMessages.duplicate) {
     $('#title').text('Try a new number.');
   } else {
     $('#guesses-list li:nth-child('+ game.pastGuesses.length +')').text(game.playersGuess).show();
+    $('.header').addClass('col-6 col-sm-3').addClass('header-vertical');
   }
 
   if ((outcome === game.playerMessages.win) ||
@@ -109,6 +114,16 @@ function processGuessOutcome(game, outcome) {
     $('#subtitle').text('~reset to rematch~');
     $('#submit').prop("disabled", true);
     $('#hint').prop("disabled", true);
+    $('.header').removeClass('col-6 col-sm-3');
+    game.isOver = true;
+    $('.answerWas').show();
+    // convert z-indexes to negative - which is actually perfect
+    // that way then you cant put in any guesses any more.
+    var playerInput = document.getElementById('player-input');
+    var submitBtn = document.getElementById('submit');
+    playerInput.setAttribute("style", "z-index:-2;");
+    submitBtn.setAttribute("style", "z-index:-1;");
+
 
   } else {
     var higherOrLower = game.isLower() ? 'higher' : 'lower';
@@ -120,6 +135,7 @@ function processGuessOutcome(game, outcome) {
 $(document).ready(function() {
   var game = newGame();
   $('#guesses-list li').hide();
+  $('.answerWas').hide();
 
   $('#submit').click(function(event) {
     processPlayerGuess(game);
@@ -134,6 +150,39 @@ $(document).ready(function() {
   $('#reset').click(function() {
     game = newGame();
     $('#guesses-list li').hide();
+    $('.answerWas').hide();
+    $('#title').text('Guessing Game');
+    $('#subtitle').text('~owow it\'s a rematch~');
+    $('.header').removeClass('col-6 col-sm-3');
+
+    var playerInput = document.getElementById('player-input');
+    var submitBtn = document.getElementById('submit');
+    playerInput.setAttribute("style", "z-index:1;");
+    submitBtn.setAttribute("style", "z-index:2;");
 
   });
+
+  $('#title').on("DOMSubtreeModified",function(){
+    console.log('changed');
+  });
+
+
 });
+
+
+// Have a game-like obj but for gameboard
+
+// function newGame() {
+//   return new Game();
+// }
+
+
+// function Game() {
+//   this.playersGuess = null;
+//   this.pastGuesses = [];
+//   this.winningNumber = generateWinningNumber();
+// }
+
+// Game.prototype.difference = function() {
+//   return Math.abs(this.playersGuess - this.winningNumber);
+// }

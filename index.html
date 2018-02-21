@@ -26,21 +26,77 @@
       <div class="center">
 
 
-          <div class="header">
+          <div class="gameboard">
+
+            <div class="header">
             <h1 id="title">Guessing Game</h1>
             <h2 id="subtitle">Guess a number between 1 and 100...</h2>
+            </div>
+
+            <div id="guesses">
+                <ul class="row" id="guesses-list">
+                  <li class="guess">00</li>
+                  <li class="guess">00</li>
+                  <li class="guess">00</li>
+                  <li class="guess">00</li>
+                  <li class="guess">00</li>
+                </ul>
+              </div>
+
           </div>
 
 
         <div id="main">
         <div id="input-container" class="row">
-        <div id="input-parent" class="col-sm-3">
+
+        <div id="input-parent" class="col-12 col-sm-3">
           <input id="player-input" placeholder="#" maxlength="3" autofocus=autofocus></input>
-          <button type="button" class="btn btn-success" id="submit">Go</button>
-        </div>
+
+          <div class="button-class">
+            <!-- <link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
+            <svg viewBox="0 0 1000 300">
+              <defs>
+                <path id="MyPath"
+                      d="M 130 200
+                        C 100 000 620   100 100 650" />
+              </defs>
+             <text font-family="Kavivanar" font-size="32">
+                <textPath xlink:href="#MyPath">
+                  The Correct Answer Is
+                </textPath>
+              </text>
+            </svg> -->
+
+
+          <div class="answerWas">
+            <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+            <svg viewBox="0 0 1000 300" id="answerWas">
+              <defs>
+                <path id="MyPath"
+                      d="M 130 200
+                        C 1000 000 120   100 2000 050" />
+              </defs>
+             <text style="color:pink">
+                <textPath xlink:href="#MyPath">
+                  The Answer Was
+                </textPath>
+              </text>
+            </svg>
+          </div>
+
+            <button type="button" class="btn btn-success" id="submit">Go</button>
+          </div>
+
         </div>
 
-        <div id="guesses">
+        <div id="btn-parent" class="col-12 col-sm-6">
+          <button type="button" class="btn btn-warning" id="reset">Reset</button>
+          <button type="button" class="btn btn-info" id="hint">Hint</button>
+        </div>
+
+        </div>
+
+        <!-- <div id="guesses">
           <ul class="row" id="guesses-list">
             <li class="guess">00</li>
             <li class="guess">00</li>
@@ -48,12 +104,12 @@
             <li class="guess">00</li>
             <li class="guess">00</li>
           </ul>
-        </div>
+        </div> -->
 
-        <nav class="navbar navbar-default" id="menu-btns">
-          <button type="button" class="btn btn-warning" id="reset">Reset</button>
-          <button type="button" class="btn btn-info" id="hint">Hint</button>
-        </nav>
+        <!-- <nav class="navbar navbar-default" id="menu-btns"> -->
+          <!-- <button type="button" class="btn btn-warning" id="reset">Reset</button>
+          <button type="button" class="btn btn-info" id="hint">Hint</button> -->
+        <!-- </nav> -->
 
 
 
