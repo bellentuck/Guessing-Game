@@ -109,9 +109,10 @@ function processGuessOutcome(game, outcome) {
     $('#title').text('Try a new number.');
     document.getElementById('title').style.fontSize = "350%";
   } else {
-    $('#guesses').show();
+    $('#guesses').slideDown(500);
     $('#guessListTitle').show();
     $('#guesses-list li:nth-child('+ game.pastGuesses.length +')').text(game.playersGuess).show();
+    document.getElementById('footer').style.height = '80px';
     // $('.header').addClass('col-6 col-sm-6').addClass('header-vertical');
   }
 
@@ -128,7 +129,7 @@ function processGuessOutcome(game, outcome) {
     // (( here for now ))
 
     $('#guesses').hide();
-
+    document.getElementById('footer').style.height = '200px';
     $('#subtitle').text('~reset to rematch~');
     $('#submit').prop("disabled", true);
     $('#hint').prop("disabled", true);
@@ -213,10 +214,11 @@ $(document).ready(function() {
     $('#guesses-list li').hide();
     $('.answerWas').hide();
     $('#guessListTitle').hide();
-    // $('#guesses').hide();
+    $('#guesses').hide();
     $('#title').text('Guessing Game');
     $('#subtitle').text('~owow it\'s a rematch~');
     $('.header').removeClass('col-6 col-sm-3');
+    //document.getElementById('footer').style.height = '200px';
 
     var playerInput = document.getElementById('player-input');
     var submitBtn = document.getElementById('submit');

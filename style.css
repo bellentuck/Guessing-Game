@@ -45,6 +45,12 @@ body {
   color: #EEEAEA;
 }
 
+#submit {
+  font-family: 'Shrikhand', 'Roboto', sans-serif;
+  text-shadow: 1px 1px 3px #495867;
+  color: #FFF;
+}
+
 #gameboard, #guesses {
   color: #EEEAEA;
   box-shadow: 1px 1px 3px #495867;
@@ -438,10 +444,10 @@ text-align: center;
     margin-top: 50px;
     margin-left: -15px;
     height: 150px;
-    -webkit-transition: all 1s ease;
+    /* -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
-    transition: all 1s ease;
+    transition: all 1s ease; */
     border-radius: 81%;
 }
 #guessListTitle {
@@ -524,6 +530,11 @@ ul {
   color: #EEEAEA;
   background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
   opacity: 0.97;
+  height: 200px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 #logo {
