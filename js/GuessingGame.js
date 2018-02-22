@@ -102,6 +102,7 @@ function processPlayerGuess(game) {
 
 function processGuessOutcome(game, outcome) {
 
+  setTimeout(function(){
 
   if (game.isOver) throw 'Cannot process guess if game is over';
 
@@ -109,10 +110,11 @@ function processGuessOutcome(game, outcome) {
     $('#title').text('Try a new number.');
     document.getElementById('title').style.fontSize = "350%";
   } else {
+    $('.top-level').css("margin-top", "0px");
     $('#guesses').slideDown(500);
     $('#guessListTitle').show();
-    $('#guesses-list li:nth-child('+ game.pastGuesses.length +')').text(game.playersGuess).show();
-    document.getElementById('footer').style.height = '80px';
+    $('#guesses-list li:nth-child('+ game.pastGuesses.length +')').text(game.playersGuess).show(100);
+    //document.getElementById('footer').style.height = '80px';
     // $('.header').addClass('col-6 col-sm-6').addClass('header-vertical');
   }
 
@@ -128,8 +130,16 @@ function processGuessOutcome(game, outcome) {
     // ( GAME OVER STUFF )
     // (( here for now ))
 
-    $('#guesses').hide();
-    document.getElementById('footer').style.height = '200px';
+    $('#guessListTitle').hide();
+    $('#guesses-list li:nth-child(1)').text(game.playersGuess).hide(200);
+    $('#guesses-list li:nth-child(2)').text(game.playersGuess).hide(400);
+    $('#guesses-list li:nth-child(3)').text(game.playersGuess).hide(600);
+    $('#guesses-list li:nth-child(4)').text(game.playersGuess).hide(800);
+    $('#guesses-list li:nth-child(5)').text(game.playersGuess).hide(1000);
+    $('#guesses').hide(2000);
+
+    $('.top-level').css("margin-top", "87px");
+    //document.getElementById('footer').style.height = '200px';
     $('#subtitle').text('~reset to rematch~');
     $('#submit').prop("disabled", true);
     $('#hint').prop("disabled", true);
@@ -150,6 +160,8 @@ function processGuessOutcome(game, outcome) {
     $('#title').text(outcome);
     $('#subtitle').text(' Guess ' + higherOrLower + '!');
   }
+
+  }, 200);
 }
 
 $(document).ready(function() {
@@ -219,7 +231,7 @@ $(document).ready(function() {
     $('#subtitle').text('~owow it\'s a rematch~');
     $('.header').removeClass('col-6 col-sm-3');
     //document.getElementById('footer').style.height = '200px';
-
+    $('.top-level').css("margin-top", "87px");
     var playerInput = document.getElementById('player-input');
     var submitBtn = document.getElementById('submit');
     playerInput.setAttribute("style", "z-index:1;");

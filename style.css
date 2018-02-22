@@ -39,6 +39,15 @@ body {
 
 
 /*------- Header -------------------------------------------------------------*/
+.top-level {
+  margin-top: 87px;
+  margin-left: 6.12% !important;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
 #gameboard, .menu-btns, #player-input, #submit, .guess, #btn-parent, #guesses {
   font-family: 'Shrikhand', 'Roboto', sans-serif;
   text-shadow: 1px 1px 3px #495867;
@@ -65,6 +74,10 @@ body {
 
   opacity: 0.97;
   height: 360px;
+}
+
+.header {
+  padding-top: 6.12%;
 }
 
 .opening-animation {
@@ -530,11 +543,11 @@ ul {
   color: #EEEAEA;
   background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
   opacity: 0.97;
-  height: 200px;
-  -webkit-transition: all 1s ease;
+  height: 80px; /* 200px; */
+  /* -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
-  transition: all 1s ease;
+  transition: all 1s ease; */
 }
 
 #logo {
