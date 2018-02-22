@@ -86,9 +86,17 @@ Game.prototype.provideHint = function() {
 
 // jQuery stuff ---------------------------//
 function processPlayerGuess(game) {
+
+
+  $('#submit').removeClass('select-animation');
+  void document.getElementById('submit').offsetWidth;
+  $('#submit').addClass('select-animation');
+
   var guess = $('#player-input').val();
   $('#player-input').val('');
   var outcome = game.playersGuessSubmission(parseInt(guess, 10));
+
+  document.getElementById('title').style.fontSize = "500%";
   processGuessOutcome(game, outcome);
 }
 
@@ -99,9 +107,12 @@ function processGuessOutcome(game, outcome) {
 
   if (outcome === game.playerMessages.duplicate) {
     $('#title').text('Try a new number.');
+    document.getElementById('title').style.fontSize = "350%";
   } else {
+    $('#guesses').show();
+    $('#guessListTitle').show();
     $('#guesses-list li:nth-child('+ game.pastGuesses.length +')').text(game.playersGuess).show();
-    $('.header').addClass('col-6 col-sm-3').addClass('header-vertical');
+    // $('.header').addClass('col-6 col-sm-6').addClass('header-vertical');
   }
 
   if ((outcome === game.playerMessages.win) ||
@@ -111,6 +122,9 @@ function processGuessOutcome(game, outcome) {
     } else {
       $('#title').text('You lose.');
     }
+
+    // here's what happens when a game ends
+
     $('#subtitle').text('~reset to rematch~');
     $('#submit').prop("disabled", true);
     $('#hint').prop("disabled", true);
@@ -123,7 +137,8 @@ function processGuessOutcome(game, outcome) {
     var submitBtn = document.getElementById('submit');
     playerInput.setAttribute("style", "z-index:-2;");
     submitBtn.setAttribute("style", "z-index:-1;");
-
+    $('#player-input').attr('placeholder', game.winningNumber);
+    document.getElementById('player-input').style.opacity = .9;
 
   } else {
     var higherOrLower = game.isLower() ? 'higher' : 'lower';
@@ -136,21 +151,65 @@ $(document).ready(function() {
   var game = newGame();
   $('#guesses-list li').hide();
   $('.answerWas').hide();
+  $('#guessListTitle').hide();
+  $('#guesses').hide();
+
 
   $('#submit').click(function(event) {
     processPlayerGuess(game);
   });
   $(document).keypress(function(event) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
+    if (keycode == '13' && !game.isOver) {
       processPlayerGuess(game);
     }
+  });
+
+  // $('#guesses-list').on('li', 'hover', function() {
+  //   var audio = document.getElementsByTagName("audio")[0];audio.play();
+  // });
+
+  var audio = $("#guessNostalgia")[0];
+  $("#guesses-list li").mouseover(function() {
+    audio.play();
+  });
+
+
+
+  // function hintTimer(hints) {
+  //     document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+  //     $('#title').text(hintText);
+  // }
+
+  $('#hint').click(function() {
+    var hints = game.provideHint();
+    var hintTexts = ['First Hint: ' + hints[0], 'Second Hint: ' + hints[1], ' Third Hint: ' +     hints[2], 'Final Hint: you have now glimpsed the winning number...', 'Guessing Game']
+    var i = 1;
+    function hintTimer() {
+      $('#title').text(hintTexts[i]);
+      i++;
+      if (i === hintTexts.length) {
+        document.getElementById('title').style.fontSize = "500%";
+        $('#subtitle').text('Guess a number between 1 and 100...');
+        $('#title').removeClass('fade-thru');
+      }
+    }
+    $('#title').addClass('fade-thru');
+    $('#title').text(hintTexts[0]);
+    $('#subtitle').text('');
+    var hintTimerInterval = setInterval(hintTimer, 4000);
+    // var hintText = 'Hint: the winning number is either ' + hints[0] + ', ' +
+    //   hints[1] + ', or ' + hints[2] + '.';
+    document.getElementById('title').style.fontSize = "350%";
+    // $('#title').text(hintText);
   });
 
   $('#reset').click(function() {
     game = newGame();
     $('#guesses-list li').hide();
     $('.answerWas').hide();
+    $('#guessListTitle').hide();
+    $('#guesses').hide();
     $('#title').text('Guessing Game');
     $('#subtitle').text('~owow it\'s a rematch~');
     $('.header').removeClass('col-6 col-sm-3');
@@ -159,11 +218,23 @@ $(document).ready(function() {
     var submitBtn = document.getElementById('submit');
     playerInput.setAttribute("style", "z-index:1;");
     submitBtn.setAttribute("style", "z-index:2;");
+    $('#player-input').attr('placeholder', '#');
+    document.getElementById('player-input').style.opacity = 1;
+    $('#submit').prop("disabled", false);
+    $('#hint').prop("disabled", false);
+
+    $('#gameboard').removeClass('opening-animation-titles');
+    $('#input-container').removeClass('opening-animation-btns');
+    $('#footer').removeClass('opening-animation-footer');
+    void document.getElementById('gameboard').offsetWidth;
+    $('#gameboard').addClass('opening-animation-titles');
+    $('#input-container').addClass('opening-animation-btns');
+    $('#footer').addClass('opening-animation-footer');
 
   });
 
   $('#title').on("DOMSubtreeModified",function(){
-    console.log('changed');
+    //console.log('changed');
   });
 
 

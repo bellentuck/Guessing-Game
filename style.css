@@ -39,14 +39,14 @@ body {
 
 
 /*------- Header -------------------------------------------------------------*/
-.gameboard, .menu-btns, #player-input, #submit, .guess {
-  font-family: 'Roboto', sans-serif;
+#gameboard, .menu-btns, #player-input, #submit, .guess, #btn-parent, #guesses {
+  font-family: 'Shrikhand', 'Roboto', sans-serif;
   text-shadow: 1px 1px 3px #495867;
+  color: #EEEAEA;
 }
 
-.gameboard {
+#gameboard, #guesses {
   color: #EEEAEA;
-  animation: overture 1.8s 1 linear;
   box-shadow: 1px 1px 3px #495867;
   background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
 /* }
@@ -56,15 +56,73 @@ body {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+
+  opacity: 0.97;
+  height: 360px;
 }
 
-.header-vertical {
-  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+.opening-animation {
+  animation: opening 1.8s 1 linear;
 }
+
+.opening-animation-titles {
+  animation: opening 1s 1 linear;
+}
+.opening-animation-btns {
+  animation: opening 1.5s 1 linear;
+}
+.opening-animation-footer {
+  animation: opening 1.5s 1 linear;
+}
+
+/* font-size: 2em;
+width: 70px;
+height: 70px; */
+
+@keyframes opening-enlargen {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix3d(100, 200, 1, 1, 1, 1, 1, 1, 1, 1, 666, 0, 6, 0, 0, 1);
+  }
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+@keyframes opening-shrink {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix3d(1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 666, 0, 6, 0, 0, 1);
+  }
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
 
 #title {
-  font-size: 8em;
+  font-size: 500%; /*8em;*/
   opacity: .95;
+  /* -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; */
 }
 #subtitle {
   font-size: 2.5em;
@@ -108,6 +166,7 @@ body {
   position: absolute;
   height: 300px;
   width: 350px;
+  margin-top: -30px;
   /* right: 100px; */
   /* display: flex; */
   /* justify-content: space-around; */
@@ -117,6 +176,7 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+  margin: 0px 10px -80px 10px;
 }
 
 
@@ -130,12 +190,12 @@ We could also have written this in the margin shorthand,
 which specifies the margin-top, right, bottom and left respectively ---
  margin: 0 auto 0 auto; --- or, simply, margin: 0 auto;.
 */
-#player-input{
+#player-input {
   width: 225px;
   height: 225px;
   border-radius: 50%;
   position: absolute;
-  z-index: -2;
+  z-index: 1;
   margin-left: -100px;
   font-size: 6.5em;
   color: #fff;
@@ -145,7 +205,7 @@ which specifies the margin-top, right, bottom and left respectively ---
   background: linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
 }
 
-#player-input:focus, #submit:focus {
+#player-input:focus, #submit:focus, #reset:focus, #hint:focus {
   outline: 0;
 }
 
@@ -159,7 +219,7 @@ which specifies the margin-top, right, bottom and left respectively ---
   top: 156px;
   left: 262px;
   margin-right: 100px;
-  z-index: -1;
+  z-index: 2;
   /* animation: rot2 10s 1 linear; */
 }
 
@@ -176,16 +236,20 @@ which specifies the margin-top, right, bottom and left respectively ---
 
 .answerWas {
   font-family: "Shrikhand";
-  font-size: 42px;
-  margin-top: 27px;
-  margin-right: -150px;
-  margin-left: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 3px #495867;
+  font-size: 18px;
+  margin-top: 73px;
+  margin-right: 11px;
   z-index: 1;
   opacity: .9;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  -ms-transform: rotate(-13deg); /* IE 9 */
+  -webkit-transform: rotate(-13deg); /* Safari 3-8 */
+  transform: rotate(-13deg);
 }
 
 
@@ -227,7 +291,7 @@ which specifies the margin-top, right, bottom and left respectively ---
   }
 }
 
-@keyframes opening {
+/* @keyframes opening {
   0%, 100% {
     width: 100%;
     height: 310px;
@@ -236,7 +300,7 @@ which specifies the margin-top, right, bottom and left respectively ---
     width: 100%;
     height: 400px;
   }
-}
+} */
 
 @keyframes backgroundColor {
   0%, 100% {
@@ -244,6 +308,26 @@ which specifies the margin-top, right, bottom and left respectively ---
   }
   50% {
     opacity: .9;
+  }
+}
+
+
+.fade-thru {
+	opacity: 1;
+	animation-name: fadeThru;
+	animation-iteration-count: 4;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 0.9, .8);
+  /* cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+  /* cubic-bezier(0.075, 0.82, 0.165, 1); ease-in; */
+	animation-duration: 4s;
+}
+
+@keyframes fadeThru {
+	0%, 100% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
   }
 }
 
@@ -309,7 +393,7 @@ which specifies the margin-top, right, bottom and left respectively ---
 }
 
 
-@keyframes overture {
+@keyframes opening {
 	0% {
 		transform: rotate(0deg)
 		           translate(-150px)
@@ -350,9 +434,16 @@ text-align: center;
 
 /*------- Guesses ------------------------------------------------------------*/
 #guesses {
-
+    /* border: 2px solid black; */
+    margin-top: 50px;
+    margin-left: -15px;
+    height: 150px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
 }
-#guesses-list {
+#guessListTitle {
 
 }
 .guess {
@@ -372,8 +463,29 @@ text-align: center;
   which means, have to label each guess differently, different IDs.*/
 }
 
+/* .guess:hover {
+  animation: popUpKeys .85s 1 linear;
+}
+@keyframes popUpKeys {
+  0% {
+    border-style: outset;
+  }
+  50% {
+    border-style: inset;
+  }
+} */
+
 .guess:hover {
-   border-style: outset;
+  animation: popUpKeys 1s 1 linear; /*alternatively: .85s */
+}
+
+@keyframes popUpKeys {
+  0% {
+    border-style: outset;
+  }
+  41% {                             /*alternatively: 50% */
+    border-style: inset;
+  }
 }
 
 ul {
@@ -386,10 +498,17 @@ ul {
   background: -webkit-linear-gradient(90deg, darkmagenta 10%, #EC6F66 90%);
   margin-bottom: 7%;
 }
+/* #reset, #hint {
+  margin: 250px 100px -240px 80px;
+  width: 200px;
+  height: 60px;
+  font-size: 35px;
+} */
 #reset, #hint {
-  /* margin: 100px 100px -90px 100px; */
+  margin: 260px 100px -250px 80px;
   width: 200px;
   height: 40px;
+  font-size: 34px;
 }
 
 /*------- Footer -------------------------------------------------------------*/
@@ -398,9 +517,23 @@ ul {
   justify-content: space-around;
 }
 
+#footer {
+  font-family: 'Shrikhand', 'Roboto', sans-serif;
+  text-shadow: 1px 1px 3px #495867;
+  color: #EEEAEA;
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+  opacity: 0.97;
+}
+
+#logo {
+  margin-top: -10px;
+}
+
 #byline {
-  margin-top: 3%;
+  margin-top: 0.7%;
+  margin-bottom: 1%;
   text-align: right;
+  opacity: .8;
 }
 
 img {
@@ -413,7 +546,7 @@ img {
   bottom: 0;  /* ...to the bottom of the page */
 
   width: 100%;
-  border-top: solid 2px #333;
+  /* border-top: solid 2px #333; */
   /* background: linear-gradient(90deg, #516395 10%, #614385 90%); */
   /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
   /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; */

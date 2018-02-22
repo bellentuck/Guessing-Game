@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
 
   </head>
   <body>
@@ -26,67 +27,70 @@
       <div class="center">
 
 
-          <div class="gameboard">
+        <div class="row"> <!--beginning of outer row-->
 
+          <div id="gameboard" class="opening-animation-titles col-xs-12 col-sm-6">
             <div class="header">
             <h1 id="title">Guessing Game</h1>
             <h2 id="subtitle">Guess a number between 1 and 100...</h2>
             </div>
-
-            <div id="guesses">
-                <ul class="row" id="guesses-list">
-                  <li class="guess">00</li>
-                  <li class="guess">00</li>
-                  <li class="guess">00</li>
-                  <li class="guess">00</li>
-                  <li class="guess">00</li>
-                </ul>
-              </div>
-
           </div>
+
+
+          <div id="input-container" class="opening-animation-btns col-xs-12 col-sm-6"> <!--beginning of input container column-->
+
+            <div class="row">
+              <!--beginning of input container column inner row-->
+
+                <div id="input-parent" class="col-12 col-sm-3">
+                  <input id="player-input" placeholder="#" maxlength="3" autofocus=autofocus></input>
+                  <div class="button-class">
+                    <div class="answerWas">
+                      The Answer Was
+                    </div>
+                    <button type="button" class="btn btn-success" id="submit">Go</button>
+                  </div>
+                </div>
+
+                <div id="btn-parent" class="col-12 col-sm-6">
+                  <button type="button" class="btn btn-warning" id="reset">Reset</button>
+                  <button type="button" class="btn btn-info" id="hint">Hints</button>
+                </div>
+
+              </div>
+              <!--end of inner row-->
+
+            </div> <!--end of input container column-->
+
+          </div> <!--end of outer row-->
+
 
 
         <div id="main">
-        <div id="input-container" class="row">
+
+
+            <div id="guesses">
+              <div class="row"> <!--begin outer row-->
+                <h2 class="col-2" id="guessListTitle">Past Guesses:</h2>
+                <div class="col-10">
+                  <ul class="row" id="guesses-list"> <!--begin inner row-->
+                    <li class="guess">00</li>
+                    <li class="guess">00</li>
+                    <li class="guess">00</li>
+                    <li class="guess">00</li>
+                    <li class="guess">00</li>
+                  </ul> <!--end inner row-->
+                </div>
+              </div> <!--end outer row-->
+            </div>
+        <!-- <div id="input-container" class="row">
 
         <div id="input-parent" class="col-12 col-sm-3">
           <input id="player-input" placeholder="#" maxlength="3" autofocus=autofocus></input>
-
           <div class="button-class">
-            <!-- <link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
-            <svg viewBox="0 0 1000 300">
-              <defs>
-                <path id="MyPath"
-                      d="M 130 200
-                        C 100 000 620   100 100 650" />
-              </defs>
-             <text font-family="Kavivanar" font-size="32">
-                <textPath xlink:href="#MyPath">
-                  The Correct Answer Is
-                </textPath>
-              </text>
-            </svg> -->
-
-
-          <div class="answerWas">
-            <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
-            <svg viewBox="0 0 1000 300" id="answerWas">
-              <defs>
-                <path id="MyPath"
-                      d="M 130 200
-                        C 1000 000 120   100 2000 050" />
-              </defs>
-             <text style="color:pink">
-                <textPath xlink:href="#MyPath">
-                  The Answer Was
-                </textPath>
-              </text>
-            </svg>
-          </div>
-
+            <div class="answerWas">The Answer Was</div>
             <button type="button" class="btn btn-success" id="submit">Go</button>
           </div>
-
         </div>
 
         <div id="btn-parent" class="col-12 col-sm-6">
@@ -94,7 +98,7 @@
           <button type="button" class="btn btn-info" id="hint">Hint</button>
         </div>
 
-        </div>
+        </div> -->
 
         <!-- <div id="guesses">
           <ul class="row" id="guesses-list">
@@ -121,17 +125,24 @@
     </div>
     <!-- end of the container -->
 <!-- out of the container -->
-    <div class="row" id="footer">
+    <div class="row opening-animation-footer" id="footer">
       <div  class="col-sm-3">
-        <img src="img/fa-logo.png" alt="Fullstack Logo"></img>
+        <img src="img/fa-logo.png" alt="Fullstack Logo" id="logo"></img>
       </div>
 
       <div class="col-sm-9" id="byline">
-        <h4>Project by Ben Ellentuck</h4>
+        <h4>Project by</h4>
+        <h3 style="margin-top: -6px;">Ben Ellentuck</h3>
       </div>
     </div>
     <!-- </canvas> -->
+
+    <audio id="guessNostalgia">
+      <source src="audio/stapler.mp3"></source>
+      Your browser isn't invited for super fun audio time.
+    </audio>
   </body>
+
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -139,3 +150,18 @@
   <script type="text/javascript" src="js/GuessingGame.js"></script>
   <script type="text/javascript" src="index.js"></script>
 </html>
+
+
+
+            <!-- <svg viewBox="0 0 1000 300" id="answerWas">
+              <defs>
+                <path id="MyPath"
+                      d="M 130 200
+                        C 1000 000 120   100 2000 050" />
+              </defs>
+             <text style="color:pink">
+                <textPath xlink:href="#MyPath">
+                  The Answer Was
+                </textPath>
+              </text>
+            </svg> -->

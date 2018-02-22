@@ -9,20 +9,20 @@ $(document).ready(function() {
 
   //makeCanvasFullPage();
   //loadInGradients("https://github.com/ghosh/uiGradients/blob/master/gradients.json");
-  setEventListeners();
+  // setEventListeners();
 });
 
 
   /* Guess Button animation */
-function setEventListeners() {
-  var goBtn = document.getElementById("submit");
-  goBtn.addEventListener('click', function() {
-    goBtn.preventDefault;
-    // See: https://css-tricks.com/restart-css-animation/
-    goBtn.classList.remove("select-animation");
-    void goBtn.offsetWidth;
-    goBtn.classList.add("select-animation");
-  }, false);
+// function setEventListeners() {
+//   var goBtn = document.getElementById("submit");
+//   goBtn.addEventListener('click', function() {
+//     goBtn.preventDefault;
+//     // See: https://css-tricks.com/restart-css-animation/
+//     goBtn.classList.remove("select-animation");
+//     void goBtn.offsetWidth;
+//     goBtn.classList.add("select-animation");
+//   }, false);
   /*
   var input = document.getElementById("input-parent");
   input.addEventListener('mouseenter', function() {
@@ -37,7 +37,7 @@ function setEventListeners() {
     // $('#submit').classList.add("submit-input-animation");
   }, false);
   */
-}
+// }
 
 
 
