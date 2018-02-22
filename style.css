@@ -442,6 +442,7 @@ text-align: center;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     transition: all 1s ease;
+    border-radius: 81%;
 }
 #guessListTitle {
 

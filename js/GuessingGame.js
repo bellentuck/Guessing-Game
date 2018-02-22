@@ -124,6 +124,10 @@ function processGuessOutcome(game, outcome) {
     }
 
     // here's what happens when a game ends
+    // ( GAME OVER STUFF )
+    // (( here for now ))
+
+    $('#guesses').hide();
 
     $('#subtitle').text('~reset to rematch~');
     $('#submit').prop("disabled", true);
@@ -209,7 +213,7 @@ $(document).ready(function() {
     $('#guesses-list li').hide();
     $('.answerWas').hide();
     $('#guessListTitle').hide();
-    $('#guesses').hide();
+    // $('#guesses').hide();
     $('#title').text('Guessing Game');
     $('#subtitle').text('~owow it\'s a rematch~');
     $('.header').removeClass('col-6 col-sm-3');
