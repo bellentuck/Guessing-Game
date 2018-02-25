@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/*
+1. Page-wide & larger-scale (shared) settings
+2. Title card
+3. Controls
+4. Past guesses
+5. Footer
+6. Animations
+*/
+
+/* ------------- 1. Page-wide & larger-scale (shared) settings -------------- */
+html {
+  box-sizing: 'border-box';
+} /*change the calculation of the width of an element to include padding and border.*/
+body {
+  margin: 0px;
+  background-image: url('../img/binary.jpg');
+}
+.center {
+  text-align: center;
+  z-index: 1;
+}
+/* title card + controls */
+.top-level {
+  margin-top: 87px;
+  margin-left: 6.12% !important;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+#gameboard, .menu-btns, #player-input, #submit, .guess, #btn-parent, #guesses {
+  font-family: 'Shrikhand', 'Roboto', sans-serif;
+  text-shadow: 1px 1px 3px #495867;
+  color: #EEEAEA;
+}
+#gameboard, #guesses {
+  color: #EEEAEA;
+  box-shadow: 1px 1px 3px #495867;
+  background-image: linear-gradient(7deg, #d299c2 0%, #fef9d7 100%);
+  /* alt: linear-gradient(225deg, #f0c27b 0%, #4b1248 100%) */
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  opacity: 0.97;
+  height: 360px;
+}
+
+
+/* ---------------------------- 2. Title card ------------------------------- */
+.header {
+  padding-top: 6.12%;
+}
+
+#title {
+  font-size: 500%;
+  opacity: .95;
+}
+#subtitle {
+  font-size: 2.5em;
+}
+
+
+/* ----------------------------- 3. Controls -------------------------------- */
+#input-container {
+  position: relative;
+}
+#input-parent {
+  position: absolute;
+  height: 300px;
+  width: 350px;
+  margin-top: -30px;
+}
+#player-input {
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  margin-left: -100px;
+  font-size: 6.5em;
+  color: #fff;
+  border-style: groove;
+  top: 40px;
+  text-align: center;
+  background: linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
+}
+#player-input:focus, #submit:focus, #reset:focus, #hint:focus {
+  outline: 0;
+}
+/* Optimization: https://codepen.io/cemerson/pen/Gjnlo */
+input::-webkit-input-placeholder {
+  color:  #EEEAEA !important;
+  text-align: center;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color:  #F3A183 !important;
+  text-align: center;
+}
+input::-moz-placeholder {  /* Firefox 19+ */
+  color:  #F3A183 !important;
+  text-align: center;
+}
+input:-ms-input-placeholder {
+  color:  #F3A183 !important;
+  text-align: center;
+}
+.answerWas {
+  font-family: "Shrikhand";
+  color: #fff;
+  text-shadow: 1px 1px 3px #495867;
+  font-size: 18px;
+  margin-top: 73px;
+  margin-right: 11px;
+  z-index: 1;
+  opacity: .9;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -ms-transform: rotate(-13deg); /* IE 9 */
+  -webkit-transform: rotate(-13deg); /* Safari 3-8 */
+  transform: rotate(-13deg);
+}
+#submit {  /* the 'Go' button */
+  font-family: 'Shrikhand', 'Roboto', sans-serif;
+  text-shadow: 1px 1px 3px #495867;
+  color: #FFF;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  font-size: 2em;
+  position: absolute;
+  top: 156px;
+  left: 262px;
+  margin-right: 100px;
+  z-index: 2;
+}
+#btn-parent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0px 10px -80px 10px;
+}
+#reset, #hint {
+  margin: 260px 100px -250px 80px;
+  width: 200px;
+  height: 40px;
+  font-size: 34px;
+}
+
+/* -------------------------- 4. Past guesses ------------------------------- */
+#main {
+  padding-top: 76px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+#guesses {
+    margin-top: 50px;
+    margin-left: -15px;
+    height: 150px;
+}
+.guess {
+  display: inline;
+  border-style: inset;
+  border-width: 6px 3px 6px 9px;
+  border-radius: 1.4%;
+  margin: 5% 2% 20% 0%;
+  padding: 3% 4.2% 3% 4%;
+  font-size: 3em;
+  color: #fff;
+  background: linear-gradient(90deg, #EC6F66 10%, #F3A183 90%);
+}
+
+
+/* ---------------------------- 5. Footer ----------------------------------- */
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+#footer {
+  font-family: 'Shrikhand', 'Roboto', sans-serif;
+  text-shadow: 1px 1px 3px #495867;
+  color: #EEEAEA;
+  background-image: linear-gradient(4deg, #d299c2 0%, #fef9d7 100%);
+  /* alt: linear-gradient(177deg, #f0c27b 0%, #4b1248 100%) */
+  opacity: 0.97;
+  height: 80px;
+  position: fixed;     /* <-- fixes footer... */
+  bottom: 0;  /* ...to the bottom of the page */
+  width: 100%;
+  box-shadow: 1px 1px 3px #495867;
+}
+#logo {
+  margin-top: -10px;
+}
+#byline {
+  margin-top: 0.7%;
+  margin-bottom: 1%;
+  text-align: right;
+  opacity: .8;
+}
+img {
+  display: inline;
+  width: 200px;
+  height: 100px;
+}
+
+
+/* ------------------------ 6. Animations ----------------------------------- */
+
+/* Animation Classes */
+.fade-thru {
+	opacity: 1;
+	animation-name: fadeThru;
+	animation-iteration-count: 4;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 0.9, .8);
+	animation-duration: 4s;
+}
+.guess:hover {
+  animation: popUpKeys 1s 1 linear; /*alternatively: .85s */
+}
+.opening-animation {
+  animation: opening 1.8s 1 linear;
+}
+.opening-animation-titles {
+  animation: opening 1s 1 linear;
+}
+.opening-animation-btns {
+  animation: opening 1.5s 1 linear;
+}
+.opening-animation-footer {
+  animation: opening 1.5s 1 linear;
+}
+.player-input-animation {
+  animation: enlargen2 1s 1 linear;
+}
+.select-animation {
+  animation: enlargen .4s 1 linear;
+}
+.submit-input-animation {
+  animation: enlargen3 1s 1 linear;
+}
+
+
+
+/* CSS Keyframe Animations */
+
+@keyframes popUpKeys {
+  0% {
+    border-style: outset;
+  }
+  41% {                             /*alternatively: 50% */
+    border-style: inset;
+  }
+}
+
+@keyframes opening-enlargen {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix3d(100, 200, 1, 1, 1, 1, 1, 1, 1, 1, 666, 0, 6, 0, 0, 1);
+  }
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+@keyframes opening-shrink {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix3d(1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 666, 0, 6, 0, 0, 1);
+  }
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+@keyframes enlargen {
+  0%, 100% {
+    font-size: 2em;
+    width: 70px;
+    height: 70px;
+  }
+  30% {
+    font-size: 4.5em; /* 10em */
+  }
+  70% {
+    width: 69px;
+    height: 69px;
+  }
+}
+
+@keyframes enlargen2 {
+  0% {
+    height: 225px;
+    width: 225px;
+  }
+  100% {
+    height: 400px;
+    width: 400px;
+  }
+}
+@keyframes enlargen3 {
+  0% {
+    height: 70px;
+    width: 70px;
+  }
+  100% {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@keyframes backgroundColor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .9;
+  }
+}
+
+@keyframes fadeThru {
+	0%, 100% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+  }
+}
+
+ @keyframes rot {
+	from {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+@keyframes rot1 {
+	0% {
+		transform: rotate(0deg)
+		           translate(0px)
+		           rotate(0deg);
+  }
+  25% {
+    transform: translate(50%, 50%) rotate(90deg) ;
+
+  }
+  50% {
+    transform: rotate(180deg)
+               translate(-150px)
+               rotate(-180deg);
+  }
+  75% {
+    transform: rotate(270deg)
+               translate(-150px)
+               rotate(-270deg);
+  }
+  100% {
+		transform: rotate(360deg)
+		           translate(0px)
+		           rotate(-360deg);
+  }
+}
+
+
+@keyframes rot2 {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix(1, 2, 3, 4, 5, 6);
+  },
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
+
+
+@keyframes opening {
+	0% {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+
+  50% {
+    transform: matrix3d(1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 666, 0, 6, 0, 0, 1);
+  }
+
+	100% {
+		transform: rotate(360deg)
+		           translate(-150px)
+		           rotate(-360deg);
+	}
+}
