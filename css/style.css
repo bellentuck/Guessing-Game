@@ -161,9 +161,11 @@ ul {
   padding: 0;
 }
 #guesses {
-    margin-top: 50px;
-    margin-left: -15px;
-    height: 150px;
+  margin-top: 40px;
+  height: 130px;
+  position: fixed;
+  bottom: 68px;
+  width: 80%;
 }
 .guess {
   display: inline;
@@ -225,6 +227,12 @@ img {
 .guess:hover {
   animation: popUpKeys 1s 1 linear; /*alternatively: .85s */
 }
+.guesslist-removal-animation {
+  animation: guesslist-down 2s 1 linear;
+}
+.guesslist-reveal-animation {
+  animation: guesslist-up 2s 1 linear;
+}
 .opening-animation {
   animation: opening 1.8s 1 linear;
 }
@@ -250,6 +258,24 @@ img {
 
 
 /* CSS Keyframe Animations */
+
+@keyframes guesslist-down {
+  0% {
+    bottom: 68px;
+  }
+  100% {
+    bottom: -68px;
+  }
+}
+
+@keyframes guesslist-up {
+  0% {
+    bottom: -68px;
+  }
+  100% {
+    bottom: 68px;
+  }
+}
 
 @keyframes popUpKeys {
   0% {

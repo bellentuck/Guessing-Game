@@ -100,8 +100,9 @@ function newGame() {
 function hideGuessesList() {
   $('#guesses-list li').hide();
   $('#guessListTitle').hide();
-  $('#guesses').hide();
+  $('#guesses').hide().css('bottom', '68px');
 }
+
 function hideAnswerLabel() {
   $('.answerWas').hide();
 }
@@ -162,7 +163,6 @@ function getOutcomeFromGuess(game) {
   return game.playersGuessSubmission(parseInt(guess, 10));
 }
 
-
 function showGuesses(game) {
   $('.top-level').css("margin-top", "0px");
   $('#guesses').slideDown(500);
@@ -210,12 +210,24 @@ function processEndgame(game) {
 
 function removeGuessList(game) {
   $('#guessListTitle').hide();
+  animateGuessListDown();
+  animateGuessesAway(game);
+}
+
+function animateGuessListDown() {
+  $('#guesses').animate({
+    bottom: '-68px'
+  }, {
+    duration: 350
+  });
+}
+
+function animateGuessesAway(game) {
   $('#guesses-list li:nth-child(1)').text(game.playersGuess).hide(200);
   $('#guesses-list li:nth-child(2)').text(game.playersGuess).hide(400);
   $('#guesses-list li:nth-child(3)').text(game.playersGuess).hide(600);
   $('#guesses-list li:nth-child(4)').text(game.playersGuess).hide(800);
   $('#guesses-list li:nth-child(5)').text(game.playersGuess).hide(1000);
-  $('#guesses').hide(2000);
 }
 
 function getTopLevelEndgameState() {
